@@ -79,7 +79,7 @@
     <h2>Подтвердите присутствие</h2>
     <p>Пожалуйста, ответьте до <b>21 июля</b>.</p>
 
-    <form id="rsvpForm">
+    <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbwG_R935o8rMeZjZ-EGXP0hhAx9fX8VQG8HAd1kt48SAs8t3FRGW4Wr6T5bNFYb7eWb/exec" method="POST" target="hidden_iframe">
       <input name="name" type="text" placeholder="Ваше имя" required />
       <input name="phone" type="tel" placeholder="Номер телефона" required />
 
@@ -104,6 +104,7 @@
   </section>
 </main>
 
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 <script src="script.js"></script>
 </body>
 </html>

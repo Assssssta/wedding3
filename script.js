@@ -1,5 +1,3 @@
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwG_R935o8rMeZjZ-EGXP0hhAx9fX8VQG8HAd1kt48SAs8t3FRGW4Wr6T5bNFYb7eWb/exec";
-
 // Обратный отсчёт
 const weddingDate = new Date("2026-07-31T13:00:00+03:00");
 
@@ -44,29 +42,17 @@ musicBtn.addEventListener("click", async () => {
   }
 });
 
-// Форма гостей — исправленная версия
+// Форма гостей — версия без fetch, чтобы Google Script не блокировал отправку
 const form = document.getElementById("rsvpForm");
 const statusEl = document.getElementById("status");
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
+form.addEventListener("submit", () => {
   statusEl.textContent = "Отправляем...";
 
-  try {
-    const formData = new FormData(form);
-
-    await fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      body: formData
-    });
-
+  setTimeout(() => {
     form.reset();
     statusEl.textContent = "Спасибо! Ваш ответ отправлен.";
-  } catch (error) {
-    console.error(error);
-    statusEl.textContent = "Ошибка отправки. Попробуйте позже.";
-  }
+  }, 1200);
 });
 
 // Анимация блоков
