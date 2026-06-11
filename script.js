@@ -1,6 +1,6 @@
 // Ссылка Google Apps Script.
 // Когда получите ссылку Web App, вставьте её вместо текста ниже.
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby0LKrmVOx_nt5Imxq-O3L0c2mXy16KOLn5m9WvfkELko1DTvjpeIQj4sGJwL8__iI2/exec";
+const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
 // Обратный отсчёт
 const weddingDate = new Date("2026-07-31T13:00:00+03:00");
