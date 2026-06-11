@@ -1,6 +1,4 @@
-// Ссылка Google Apps Script.
-// Когда получите ссылку Web App, вставьте её вместо текста ниже.
-const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwG_R935o8rMeZjZ-EGXP0hhAx9fX8VQG8HAd1kt48SAs8t3FRGW4Wr6T5bNFYb7eWb/exec";
 
 // Обратный отсчёт
 const weddingDate = new Date("2026-07-31T13:00:00+03:00");
@@ -46,35 +44,27 @@ musicBtn.addEventListener("click", async () => {
   }
 });
 
-// Форма гостей
+// Форма гостей — исправленная версия
 const form = document.getElementById("rsvpForm");
 const statusEl = document.getElementById("status");
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  if (GOOGLE_SCRIPT_URL.includes("PASTE_YOUR")) {
-    statusEl.textContent = "Сначала подключите Google Таблицу.";
-    return;
-  }
-
-  const data = Object.fromEntries(new FormData(form).entries());
-
   statusEl.textContent = "Отправляем...";
 
   try {
+    const formData = new FormData(form);
+
     await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+      body: formData
     });
 
     form.reset();
     statusEl.textContent = "Спасибо! Ваш ответ отправлен.";
   } catch (error) {
+    console.error(error);
     statusEl.textContent = "Ошибка отправки. Попробуйте позже.";
   }
 });

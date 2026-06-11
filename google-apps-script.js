@@ -3,9 +3,11 @@ const SHEET_NAME = "Ответы гостей";
 function doPost(e) {
   const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
 
-  const sheet =
-    spreadsheet.getSheetByName(SHEET_NAME) ||
-    spreadsheet.insertSheet(SHEET_NAME);
+  let sheet = spreadsheet.getSheetByName(SHEET_NAME);
+
+  if (!sheet) {
+    sheet = spreadsheet.insertSheet(SHEET_NAME);
+  }
 
   if (sheet.getLastRow() === 0) {
     sheet.appendRow([
@@ -17,17 +19,13 @@ function doPost(e) {
     ]);
   }
 
-  const data = JSON.parse(e.postData.contents);
-
   sheet.appendRow([
     new Date(),
-    data.name || "",
-    data.phone || "",
-    data.attendance || "",
-    data.comment || ""
+    e.parameter.name || "",
+    e.parameter.phone || "",
+    e.parameter.attendance || "",
+    e.parameter.comment || ""
   ]);
 
-  return ContentService
-    .createTextOutput(JSON.stringify({ success: true }))
-    .setMimeType(ContentService.MimeType.JSON);
+  return ContentService.createTextOutput("OK");
 }
