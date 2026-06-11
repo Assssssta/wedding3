@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Анастасия & Максим — свадебное приглашение</title>
+  <meta name="description" content="Свадебное приглашение Анастасии и Максима" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg" />
+</audio>
+
+<button id="musicBtn" class="music-btn" aria-label="Включить музыку">♫</button>
+
+<main class="site">
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content reveal">
+      <p class="label">Свадебное приглашение</p>
+      <h1>Анастасия<br><span>&</span><br>Максим</h1>
+      <p class="hero-date">31 июля 2026 · 13:00</p>
+      <a href="#invite" class="scroll-link">листайте вниз</a>
+    </div>
+  </section>
+
+  <section id="invite" class="section reveal">
+    <p class="label">Дорогие гости</p>
+    <h2>Мы женимся!</h2>
+    <p>
+      Будем счастливы разделить с вами этот особенный день.
+      Ваше присутствие сделает наш праздник ещё теплее и радостнее.
+    </p>
+  </section>
+
+  <section class="section gradient reveal">
+    <p class="label">До свадьбы осталось</p>
+    <div class="countdown">
+      <div><b id="days">0</b><span>дней</span></div>
+      <div><b id="hours">0</b><span>часов</span></div>
+      <div><b id="minutes">0</b><span>минут</span></div>
+      <div><b id="seconds">0</b><span>секунд</span></div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="label">Когда и где</p>
+    <h2>31.07.2026</h2>
+    <p class="time">13:00</p>
+    <p>г. Рошаль<br>ул. Свердлова, 24</p>
+    <a class="button" target="_blank" rel="noopener" href="https://yandex.ru/maps/?text=Рошаль%2C%20ул.%20Свердлова%2C%2024">Открыть карту</a>
+  </section>
+
+  <section class="section reveal">
+    <p class="label">Тайминг</p>
+    <div class="timeline">
+      <div><b>13:00</b><span>Сбор гостей</span></div>
+      <div><b>13:30</b><span>Церемония</span></div>
+      <div><b>15:00</b><span>Праздничный ужин</span></div>
+      <div><b>22:00</b><span>Финал вечера</span></div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="label">Дресс-код</p>
+    <h2>Салатовый · Малиновый · Голубой</h2>
+    <p>Будем рады, если вы поддержите палитру нашего праздника.</p>
+    <div class="palette">
+      <span class="lime"></span>
+      <span class="raspberry"></span>
+      <span class="blue"></span>
+    </div>
+  </section>
+
+  <section class="section rsvp reveal">
+    <p class="label">Анкета гостя</p>
+    <h2>Подтвердите присутствие</h2>
+    <p>Пожалуйста, ответьте до <b>21 июля</b>.</p>
+
+    <form id="rsvpForm">
+      <input name="name" type="text" placeholder="Ваше имя" required />
+      <input name="phone" type="tel" placeholder="Номер телефона" required />
+
+      <select name="attendance" required>
+        <option value="">Вы придёте?</option>
+        <option value="Приду">Приду</option>
+        <option value="Не приду">Не приду</option>
+        <option value="Отвечу позже">Отвечу позже</option>
+      </select>
+
+      <textarea name="comment" placeholder="Комментарий, если нужно"></textarea>
+
+      <button type="submit">Отправить ответ</button>
+      <p id="status" class="status"></p>
+    </form>
+  </section>
+
+  <section class="section final reveal">
+    <p class="label">С любовью</p>
+    <h2>Анастасия & Максим</h2>
+    <p>31.07.2026</p>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
