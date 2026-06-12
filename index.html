@@ -1,110 +1,426 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Анастасия & Максим — свадебное приглашение</title>
-  <meta name="description" content="Свадебное приглашение Анастасии и Максима" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Екатерина & Данил — 20.06.2026</title>
+  <meta name="description" content="Свадебное приглашение Екатерины и Данила">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- ========================= -->
+<!-- КОНВЕРТ -->
+<!-- ========================= -->
+
+<div id="welcomeScreen" class="welcome-screen">
+
+  <div class="envelope-wrapper">
+
+    <div class="envelope">
+
+      <div class="envelope-front"></div>
+
+      <div class="envelope-letter">
+
+        <div class="letter-content">
+
+          <p class="small-title">
+            Свадебное приглашение
+          </p>
+
+          <h1>
+            Екатерина
+            <span>&</span>
+            Данил
+          </h1>
+
+          <p class="invite-date">
+            20 июня 2026
+          </p>
+
+          <button id="openInviteBtn">
+            Открыть приглашение
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- МУЗЫКА -->
+<!-- ========================= -->
+
 <audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg" />
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<button id="musicBtn" class="music-btn" aria-label="Включить музыку">♫</button>
+<!-- ========================= -->
+<!-- КНОПКА МУЗЫКИ -->
+<!-- ========================= -->
 
-<main class="site">
-  <section class="hero">
+<button id="musicBtn" class="music-btn">
+  ♫
+</button>
+
+<!-- ========================= -->
+<!-- САЙТ -->
+<!-- ========================= -->
+
+<main id="siteContent" class="site hidden">
+
+  <!-- ========================= -->
+  <!-- HERO -->
+  <!-- ========================= -->
+
+  <section
+    class="hero"
+    style="background-image:url('hero.jpg');">
+
     <div class="hero-overlay"></div>
-    <div class="hero-content reveal">
-      <p class="label">Свадебное приглашение</p>
-      <h1>Анастасия<br><span>&</span><br>Максим</h1>
-      <p class="hero-date">31 июля 2026 · 13:00</p>
-      <a href="#invite" class="scroll-link">листайте вниз</a>
+
+    <div class="hero-content">
+
+      <p class="hero-label">
+        SAVE THE DATE
+      </p>
+
+      <h2 class="hero-title">
+        Екатерина
+        <span>&</span>
+        Данил
+      </h2>
+
+      <p class="hero-date">
+        20 июня 2026
+      </p>
+
+      <a href="#invite" class="scroll-down">
+        листайте вниз
+      </a>
+
     </div>
+
   </section>
+
+  <!-- ========================= -->
+  <!-- ПРИГЛАШЕНИЕ -->
+  <!-- ========================= -->
 
   <section id="invite" class="section reveal">
-    <p class="label">Дорогие гости</p>
-    <h2>Мы женимся!</h2>
-    <p>
-      Будем счастливы разделить с вами этот особенный день.
-      Ваше присутствие сделает наш праздник ещё теплее и радостнее.
+
+    <p class="section-label">
+      Дорогие гости
     </p>
+
+    <h2>
+      Мы женимся!
+    </h2>
+
+    <p>
+      Совсем скоро состоится один из самых важных
+      и счастливых дней нашей жизни.
+    </p>
+
+    <p>
+      Мы будем счастливы разделить этот
+      особенный момент вместе с вами.
+    </p>
+
+    <p>
+      С нетерпением ждём встречи!
+    </p>
+
   </section>
 
-  <section class="section gradient reveal">
-    <p class="label">До свадьбы осталось</p>
+  <!-- ========================= -->
+  <!-- ТАЙМЕР -->
+  <!-- ========================= -->
+
+  <section class="section countdown-section reveal">
+
+    <p class="section-label">
+      До свадьбы осталось
+    </p>
+
     <div class="countdown">
-      <div><b id="days">0</b><span>дней</span></div>
-      <div><b id="hours">0</b><span>часов</span></div>
-      <div><b id="minutes">0</b><span>минут</span></div>
-      <div><b id="seconds">0</b><span>секунд</span></div>
+
+      <div class="count-item">
+        <b id="days">0</b>
+        <span>дней</span>
+      </div>
+
+      <div class="count-item">
+        <b id="hours">0</b>
+        <span>часов</span>
+      </div>
+
+      <div class="count-item">
+        <b id="minutes">0</b>
+        <span>минут</span>
+      </div>
+
+      <div class="count-item">
+        <b id="seconds">0</b>
+        <span>секунд</span>
+      </div>
+
     </div>
+
   </section>
+
+  <!-- ========================= -->
+  <!-- МЕСТО -->
+  <!-- ========================= -->
 
   <section class="section reveal">
-    <p class="label">Когда и где</p>
-    <h2>31.07.2026</h2>
-    <p class="time">13:00</p>
-    <p>г. Рошаль<br>ул. Свердлова, 24</p>
-    <a class="button" target="_blank" rel="noopener" href="https://yandex.ru/maps/?text=Рошаль%2C%20ул.%20Свердлова%2C%2024">Открыть карту</a>
+
+    <p class="section-label">
+      Когда и где
+    </p>
+
+    <h2>
+      20 июня 2026
+    </h2>
+
+    <p class="time">
+      Начало в 13:00
+    </p>
+
+    <p class="address">
+      Муниципальный округ Шатура<br>
+      Московская область<br>
+      СНТ «Юбилейное-1»<br>
+      дом 24
+    </p>
+
   </section>
+
+  <!-- ========================= -->
+  <!-- КАРТА -->
+  <!-- ========================= -->
 
   <section class="section reveal">
-    <p class="label">Тайминг</p>
-    <div class="timeline">
-      <div><b>13:00</b><span>Сбор гостей</span></div>
-      <div><b>13:30</b><span>Церемония</span></div>
-      <div><b>15:00</b><span>Праздничный ужин</span></div>
-      <div><b>22:00</b><span>Финал вечера</span></div>
+
+    <p class="section-label">
+      Как добраться
+    </p>
+
+    <div class="map-wrapper">
+
+      <!-- СЮДА ВСТАВИМ ГОТОВЫЙ iframe ЯНДЕКС КАРТЫ -->
+
+      <iframe
+        src=""
+        width="100%"
+        height="320"
+        frameborder="0">
+      </iframe>
+
     </div>
+
+    <div class="map-buttons">
+
+      <a
+        class="button"
+        target="_blank"
+        href="#">
+        Открыть карту
+      </a>
+
+      <a
+        class="button secondary"
+        target="_blank"
+        href="#">
+        Построить маршрут
+      </a>
+
+    </div>
+
   </section>
+
+  <!-- ========================= -->
+  <!-- ПОЖЕЛАНИЕ ПО ЦВЕТАМ -->
+  <!-- ========================= -->
 
   <section class="section reveal">
-    <p class="label">Дресс-код</p>
-    <h2>Салатовый · Малиновый · Голубой</h2>
-    <p>Будем рады, если вы поддержите палитру нашего праздника.</p>
-    <div class="palette">
-      <span class="lime"></span>
-      <span class="raspberry"></span>
-      <span class="blue"></span>
-    </div>
+
+    <p class="section-label">
+      Небольшое пожелание
+    </p>
+
+    <h2>
+      Цветовая гамма
+    </h2>
+
+    <p>
+      Мы будем рады,
+      если в ваших образах будут присутствовать
+      голубые оттенки,
+      которые поддержат атмосферу
+      нашего праздника.
+    </p>
+
+    <p>
+      Но самое главное для нас —
+      ваше присутствие и хорошее настроение.
+    </p>
+
   </section>
 
-  <section class="section rsvp reveal">
-    <p class="label">Анкета гостя</p>
-    <h2>Подтвердите присутствие</h2>
-    <p>Пожалуйста, ответьте до <b>21 июля</b>.</p>
+  <!-- ========================= -->
+  <!-- RSVP -->
+  <!-- ========================= -->
 
-    <form id="rsvpForm" action="https://script.google.com/macros/s/AKfycbx16I7qnemUEsF1Qrn2tncylHU0aFxC_yZ3tqfjN38_uwcPJf8-zMXxQSJyhlpm22pF/exec" method="POST" target="hidden_iframe">
-      <input name="name" type="text" placeholder="Ваше имя" required />
-      <input name="phone" type="tel" placeholder="Номер телефона" required />
+  <section class="section reveal">
 
-      <select name="attendance" required>
-        <option value="">Вы придёте?</option>
-        <option value="Приду">Приду</option>
-        <option value="Не приду">Не приду</option>
-        <option value="Отвечу позже">Отвечу позже</option>
+    <p class="section-label">
+      Анкета гостя
+    </p>
+
+    <h2>
+      Подтвердите присутствие
+    </h2>
+
+    <form
+      id="rsvpForm"
+      action="YOUR_APPS_SCRIPT_URL"
+      method="POST"
+      target="hidden_iframe">
+
+      <input
+        type="text"
+        name="name"
+        placeholder="Ваше имя"
+        required>
+
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Телефон">
+
+      <select
+        name="attendance"
+        required>
+
+        <option value="">
+          Сможете присутствовать?
+        </option>
+
+        <option value="Да">
+          Да
+        </option>
+
+        <option value="Нет">
+          Нет
+        </option>
+
+        <option value="Пока не уверен(а)">
+          Пока не уверен(а)
+        </option>
+
       </select>
 
-      <textarea name="comment" placeholder="Комментарий, если нужно"></textarea>
+      <select
+        name="drink">
 
-      <button type="submit">Отправить ответ</button>
-      <p id="status" class="status"></p>
+        <option value="">
+          Предпочитаемый напиток
+        </option>
+
+        <option>
+          Шампанское
+        </option>
+
+        <option>
+          Белое вино
+        </option>
+
+        <option>
+          Красное вино
+        </option>
+
+        <option>
+          Виски
+        </option>
+
+        <option>
+          Коньяк
+        </option>
+
+        <option>
+          Водка
+        </option>
+
+        <option>
+          Безалкогольные напитки
+        </option>
+
+      </select>
+
+      <textarea
+        name="comment"
+        placeholder="Комментарий">
+      </textarea>
+
+      <button type="submit">
+        Отправить ответ
+      </button>
+
+      <p id="status"></p>
+
     </form>
+
   </section>
 
-  <section class="section final reveal">
-    <p class="label">С любовью</p>
-    <h2>Анастасия & Максим</h2>
-    <p>31.07.2026</p>
+  <!-- ========================= -->
+  <!-- ФИНАЛ -->
+  <!-- ========================= -->
+
+  <section
+    class="final-photo reveal"
+    style="background-image:url('final.jpg');">
+
+    <div class="hero-overlay"></div>
+
+    <div class="final-content">
+
+      <h2>
+        Спасибо!
+      </h2>
+
+      <p>
+        Будем рады провести этот день вместе с вами
+      </p>
+
+      <h3>
+        Екатерина & Данил
+      </h3>
+
+      <p>
+        20 июня 2026
+      </p>
+
+    </div>
+
   </section>
+
 </main>
 
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+<iframe
+  name="hidden_iframe"
+  style="display:none;">
+</iframe>
+
 <script src="script.js"></script>
+
 </body>
 </html>

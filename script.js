@@ -1,64 +1,268 @@
-// Обратный отсчёт
-const weddingDate = new Date("2026-07-31T13:00:00+03:00");
+/* =====================================
+   ЕКАТЕРИНА & ДАНИЛ
+   script.js
+   ===================================== */
+
+/* =====================================
+   ДАТА СВАДЬБЫ
+   ===================================== */
+
+const weddingDate = new Date("2026-06-20T13:00:00+03:00");
+
+/* =====================================
+   ЭЛЕМЕНТЫ
+   ===================================== */
+
+const welcomeScreen = document.getElementById("welcomeScreen");
+const siteContent = document.getElementById("siteContent");
+
+const openInviteBtn = document.getElementById("openInviteBtn");
+
+const bgMusic = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+const rsvpForm = document.getElementById("rsvpForm");
+const statusEl = document.getElementById("status");
+
+/* =====================================
+   СОСТОЯНИЕ МУЗЫКИ
+   ===================================== */
+
+let musicPlaying = false;
+
+/* =====================================
+   ОТКРЫТИЕ КОНВЕРТА
+   ===================================== */
+
+openInviteBtn.addEventListener("click", async () => {
+
+  welcomeScreen.classList.add("opening");
+
+  setTimeout(() => {
+
+    welcomeScreen.style.display = "none";
+
+    siteContent.classList.remove("hidden");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }, 900);
+
+  try {
+
+    await bgMusic.play();
+
+    musicPlaying = true;
+
+    musicBtn.textContent = "❚❚";
+
+  } catch (err) {
+
+    console.log("Автовоспроизведение заблокировано браузером");
+
+  }
+
+});
+
+/* =====================================
+   КНОПКА МУЗЫКИ
+   ===================================== */
+
+musicBtn.addEventListener("click", async () => {
+
+  try {
+
+    if (musicPlaying) {
+
+      bgMusic.pause();
+
+      musicPlaying = false;
+
+      musicBtn.textContent = "♫";
+
+    } else {
+
+      await bgMusic.play();
+
+      musicPlaying = true;
+
+      musicBtn.textContent = "❚❚";
+
+    }
+
+  } catch (err) {
+
+    console.log(err);
+
+  }
+
+});
+
+/* =====================================
+   ТАЙМЕР
+   ===================================== */
 
 function updateCountdown() {
-  const now = new Date();
-  const diff = Math.max(0, weddingDate - now);
 
-  document.getElementById("days").textContent = Math.floor(diff / 86400000);
-  document.getElementById("hours").textContent = Math.floor(diff / 3600000) % 24;
-  document.getElementById("minutes").textContent = Math.floor(diff / 60000) % 60;
-  document.getElementById("seconds").textContent = Math.floor(diff / 1000) % 60;
+  const now = new Date();
+
+  const difference = weddingDate - now;
+
+  if (difference <= 0) {
+
+    document.getElementById("days").textContent = "0";
+    document.getElementById("hours").textContent = "0";
+    document.getElementById("minutes").textContent = "0";
+    document.getElementById("seconds").textContent = "0";
+
+    return;
+
+  }
+
+  const days = Math.floor(
+    difference / (1000 * 60 * 60 * 24)
+  );
+
+  const hours = Math.floor(
+    (difference / (1000 * 60 * 60)) % 24
+  );
+
+  const minutes = Math.floor(
+    (difference / (1000 * 60)) % 60
+  );
+
+  const seconds = Math.floor(
+    (difference / 1000) % 60
+  );
+
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
+
 }
 
 updateCountdown();
+
 setInterval(updateCountdown, 1000);
 
-// Музыка
-const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
-let isPlaying = false;
+/* =====================================
+   АНИМАЦИЯ ПОЯВЛЕНИЯ БЛОКОВ
+   ===================================== */
 
-musicBtn.addEventListener("click", async () => {
-  try {
-    if (isPlaying) {
-      music.pause();
-      musicBtn.textContent = "♫";
-      musicBtn.setAttribute("aria-label", "Включить музыку");
-    } else {
-      await music.play();
-      musicBtn.textContent = "❚❚";
-      musicBtn.setAttribute("aria-label", "Выключить музыку");
-    }
+const observer = new IntersectionObserver(
+  (entries) => {
 
-    isPlaying = !isPlaying;
-  } catch (error) {
-    alert("Нажмите ещё раз, чтобы включить музыку.");
+    entries.forEach((entry) => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add("visible");
+
+      }
+
+    });
+
+  },
+  {
+    threshold: 0.15
   }
-});
+);
 
-// Форма гостей
-const form = document.getElementById("rsvpForm");
-const statusEl = document.getElementById("status");
+document
+  .querySelectorAll(".reveal")
+  .forEach((el) => observer.observe(el));
 
-form.addEventListener("submit", () => {
-  statusEl.textContent = "Отправляем...";
+/* =====================================
+   ОТПРАВКА RSVP
+   ===================================== */
 
-  setTimeout(() => {
-    form.reset();
-    statusEl.textContent = "Спасибо! Ваш ответ отправлен.";
-  }, 1500);
-});
+if (rsvpForm) {
 
-// Анимация блоков
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
+  rsvpForm.addEventListener("submit", () => {
+
+    statusEl.textContent = "Отправляем ответ...";
+
+    setTimeout(() => {
+
+      statusEl.textContent =
+        "Спасибо! Ваш ответ успешно отправлен ❤️";
+
+      rsvpForm.reset();
+
+    }, 1500);
+
   });
-}, {
-  threshold: 0.16
+
+}
+
+/* =====================================
+   ПЛАВНОЕ ПОЯВЛЕНИЕ HERO
+   ===================================== */
+
+window.addEventListener("load", () => {
+
+  document.body.classList.add("loaded");
+
 });
 
-document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+/* =====================================
+   ПАРАЛЛАКС ФОТО
+   ===================================== */
+
+window.addEventListener("scroll", () => {
+
+  const hero = document.querySelector(".hero");
+
+  if (!hero) return;
+
+  const offset = window.pageYOffset;
+
+  hero.style.backgroundPositionY =
+    offset * 0.4 + "px";
+
+});
+
+/* =====================================
+   ПЛАВНЫЙ СКРОЛЛ
+   ===================================== */
+
+document
+  .querySelectorAll('a[href^="#"]')
+  .forEach(anchor => {
+
+    anchor.addEventListener("click", function (e) {
+
+      e.preventDefault();
+
+      const target = document.querySelector(
+        this.getAttribute("href")
+      );
+
+      if (!target) return;
+
+      target.scrollIntoView({
+        behavior: "smooth"
+      });
+
+    });
+
+  });
+
+/* =====================================
+   ЛЕПЕСТКИ (ОПЦИОНАЛЬНО)
+   ===================================== */
+
+// Если захотите добавить падающие лепестки,
+// позже можно подключить отдельный petals.js
+
+/* =====================================
+   ГОТОВО
+   ===================================== */
+
+console.log(
+  "Wedding Invite Loaded ❤️"
+);
